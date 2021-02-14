@@ -43,7 +43,7 @@ public class RainbowBoots extends OriPlugin {
                 colorify("&7Equip to experience the <r:0.7>Rainbow")
         );
         meta.setLore(lore);
-        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_DYE, ItemFlag.HIDE_UNBREAKABLE);
+        meta.addItemFlags(ItemFlag.values());
         meta.setUnbreakable(true);
 
         itemStack.setItemMeta(meta);
