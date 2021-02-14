@@ -10,7 +10,6 @@ import xyz.oribuin.orilibrary.OriPlugin;
 import xyz.oribuin.rainbowboots.command.BootCommand;
 import xyz.oribuin.rainbowboots.task.BootTask;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 

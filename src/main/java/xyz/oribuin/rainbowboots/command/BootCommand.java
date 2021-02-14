@@ -2,8 +2,6 @@ package xyz.oribuin.rainbowboots.command;
 
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.graalvm.compiler.core.phases.EconomyLowTier;
-import xyz.oribuin.orilibrary.OriPlugin;
 import xyz.oribuin.orilibrary.command.Argument;
 import xyz.oribuin.orilibrary.command.Command;
 import xyz.oribuin.orilibrary.libs.jetbrains.annotations.NotNull;
