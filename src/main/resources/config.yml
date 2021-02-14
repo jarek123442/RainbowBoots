@@ -1,0 +1,20 @@
+# Rainbow Boots plugin by Oribuin
+
+# Should the plugin spawn particles when a player is wearing the boots?
+use-particles: true
+
+# Show particles for player
+# Should the particles only ever show for the person wearing the boots.
+particles-player-only: false
+
+# Update Interval
+# The lower the number, the faster particles spawn and the boots change color.
+update-interval: 4
+
+# Plugin Messages
+player-only: '&c&lError &7| &fOnly a player can execute this command.'
+invalid-permission: '&c&lError &7| &fOnly a player can execute this command.'
+reload: '<r:0.7>&lRainbowBoots &7| &fYou have reloaded the plugin.'
+
+required-empty-slot: '&c&lError &7| &fYou need a free slot to get these boots.'
+given-boots: '<r:0.7>Rainbow Boots &7| &fYou have been given rainbow boots.'

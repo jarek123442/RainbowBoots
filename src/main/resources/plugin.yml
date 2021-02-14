@@ -1,0 +1,6 @@
+name: RainbowBoots
+main: xyz.oribuin.rainbowboots.RainbowBoots
+description: Colourful rainbow boots.
+api-version: '1.16'
+author: Oribuin
+version: '1.0'
