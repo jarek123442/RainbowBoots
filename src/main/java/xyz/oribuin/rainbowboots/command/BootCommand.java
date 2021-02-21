@@ -8,6 +8,7 @@ import xyz.oribuin.orilibrary.libs.jetbrains.annotations.NotNull;
 import xyz.oribuin.orilibrary.libs.jetbrains.annotations.Nullable;
 import xyz.oribuin.rainbowboots.RainbowBoots;
 
+import java.util.Collections;
 import java.util.List;
 
 import static xyz.oribuin.orilibrary.util.HexUtils.colorify;
@@ -43,12 +44,19 @@ public class BootCommand extends Command {
             return;
         }
 
+        if (!sender.hasPermission("rainbowboots.reload")) {
+            sender.sendMessage(colorify(this.plugin.getConfig().getString("invalid-permission")));
+            return;
+        }
+
         this.plugin.reload();
         sender.sendMessage(colorify(this.plugin.getConfig().getString("reload")));
     }
 
     @Override
     public @Nullable List<Argument> complete(@NotNull CommandSender commandSender, @NotNull String s, @NotNull String[] strings) {
-        return null;
+        Argument arg = new Argument(0, new String[]{"reload"});
+        arg.setRequiredPerm("rainbowboots.reload");
+        return Collections.singletonList(arg);
     }
 }
