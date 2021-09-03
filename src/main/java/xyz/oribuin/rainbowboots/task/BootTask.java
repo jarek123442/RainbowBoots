@@ -8,6 +8,7 @@ import org.bukkit.Particle;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 import org.bukkit.scheduler.BukkitRunnable;
+import xyz.oribuin.orilibrary.util.HexUtils;
 import xyz.oribuin.rainbowboots.RainbowBoots;
 
 public class BootTask extends BukkitRunnable {
@@ -43,6 +44,8 @@ public class BootTask extends BukkitRunnable {
                     assert item != null;
                     LeatherArmorMeta meta = (LeatherArmorMeta) item.getItemMeta();
                     assert meta != null;
+
+                    meta.setDisplayName(HexUtils.colorify("<r#25:0.7:l>&lRainbow Boots"));
 
                     meta.setColor(this.getRainbowColor());
                     item.setItemMeta(meta);

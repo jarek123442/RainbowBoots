@@ -1,11 +1,9 @@
 package xyz.oribuin.rainbowboots.command;
 
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
-import xyz.oribuin.orilibrary.command.Argument;
 import xyz.oribuin.orilibrary.command.Command;
-import xyz.oribuin.orilibrary.libs.jetbrains.annotations.NotNull;
-import xyz.oribuin.orilibrary.libs.jetbrains.annotations.Nullable;
 import xyz.oribuin.rainbowboots.RainbowBoots;
 
 import java.util.Collections;
@@ -14,7 +12,7 @@ import java.util.List;
 import static xyz.oribuin.orilibrary.util.HexUtils.colorify;
 
 @Command.Info(name = "rainbowboots",
-        description = "Get the rtainbow boots.",
+        description = "Get the rainbow boots.",
         subCommands = {},
         usage = "/rainbowboots",
         playerOnly = true,
@@ -27,10 +25,16 @@ public class BootCommand extends Command {
 
     public BootCommand(RainbowBoots plugin) {
         super(plugin);
+
+        final FileConfiguration config = this.plugin.getConfig();
+        this.register(
+                sender -> sender.sendMessage(colorify(config.getString("player-only"))),
+                sender -> sender.sendMessage(colorify(config.getString("invalid-permission")))
+        );
     }
 
     @Override
-    public void runFunction(@NotNull CommandSender sender, @NotNull String s, @NotNull String[] strings) {
+    public void runFunction(CommandSender sender, String s, String[] strings) {
         Player player = (Player) sender;
 
         if (strings.length == 0) {
@@ -54,9 +58,11 @@ public class BootCommand extends Command {
     }
 
     @Override
-    public @Nullable List<Argument> complete(@NotNull CommandSender commandSender, @NotNull String s, @NotNull String[] strings) {
-        Argument arg = new Argument(0, new String[]{"reload"});
-        arg.setRequiredPerm("rainbowboots.reload");
-        return Collections.singletonList(arg);
+    public List<String> completeString(CommandSender commandSender, String s, String[] strings) {
+        if (commandSender.hasPermission("rainbowboots.reload"))
+            return Collections.singletonList("reload");
+
+        return null;
     }
 }
+

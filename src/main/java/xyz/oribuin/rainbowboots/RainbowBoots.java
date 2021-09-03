@@ -20,7 +20,7 @@ public class RainbowBoots extends OriPlugin {
     public void enablePlugin() {
 
         // Register Command
-        new BootCommand(this).register(this.getConfig(), "player-only", "invalid-permission");
+        new BootCommand(this);
 
         // Register Color changing and particle task
         new BootTask(this).runTaskTimer(this, 0, this.getConfig().getLong("update-interval"));
@@ -40,7 +40,7 @@ public class RainbowBoots extends OriPlugin {
         List<String> lore = Arrays.asList(
                 colorify("&7Rainbow boots with cool effects."),
                 " ",
-                colorify("&7Equip to experience the <r:0.7>Rainbow")
+                colorify("&7Equip to experience the <r:0.7>&lRainbow")
         );
         meta.setLore(lore);
         meta.addItemFlags(ItemFlag.values());
