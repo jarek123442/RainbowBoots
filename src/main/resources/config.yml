@@ -1,5 +1,13 @@
 # Rainbow Boots plugin by Oribuin
 
+# Configure the boots.
+rainbow-boots:
+  name: '<r#10:0.7>&lRainbow Boots'
+  lore:
+    - '&7Rainbow boots with cool effects.'
+    - ''
+    - '&7Equip to experience the <r#10:0.7>&lRainbow'
+
 # Should the plugin spawn particles when a player is wearing the boots?
 use-particles: true
 
@@ -13,7 +21,7 @@ update-interval: 3
 
 # Plugin Messages
 player-only: '&c&lError &7| &fOnly a player can execute this command.'
-invalid-permission: '&c&lError &7| &fOnly a player can execute this command.'
+invalid-permission: '&c&lError &7| &fYou do not have permission to run this command.'
 reload: '<r:0.7>&lRainbowBoots &7| &fYou have reloaded the plugin.'
 
 required-empty-slot: '&c&lError &7| &fYou need a free slot to get these boots.'

@@ -1,7 +1,6 @@
 package xyz.oribuin.rainbowboots.command;
 
 import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import xyz.oribuin.orilibrary.command.Command;
 import xyz.oribuin.rainbowboots.RainbowBoots;
@@ -26,10 +25,9 @@ public class BootCommand extends Command {
     public BootCommand(RainbowBoots plugin) {
         super(plugin);
 
-        final FileConfiguration config = this.plugin.getConfig();
         this.register(
-                sender -> sender.sendMessage(colorify(config.getString("player-only"))),
-                sender -> sender.sendMessage(colorify(config.getString("invalid-permission")))
+                sender -> sender.sendMessage(colorify(this.plugin.get("player-only", "&c&lError &7| &fOnly a player can execute this command."))),
+                sender -> sender.sendMessage(colorify(this.plugin.get("invalid-permission", "&c&lError &7| &fYou do not have permission to run this command.")))
         );
     }
 
@@ -39,22 +37,22 @@ public class BootCommand extends Command {
 
         if (strings.length == 0) {
             if (player.getInventory().firstEmpty() == -1) {
-                sender.sendMessage(colorify(this.plugin.getConfig().getString("required-empty-slot")));
+                sender.sendMessage(colorify(this.plugin.get("required-empty-slot", "&c&lError &7| &fYou need a free slot to get these boots.")));
                 return;
             }
 
             player.getInventory().addItem(((RainbowBoots) this.getOriPlugin()).boots());
-            sender.sendMessage(colorify(this.plugin.getConfig().getString("given-boots")));
+            sender.sendMessage(colorify(this.plugin.get("given-boots", "<r:0.7>&lRainbow Boots &7| &fYou have been given rainbow boots.")));
             return;
         }
 
         if (!sender.hasPermission("rainbowboots.reload")) {
-            sender.sendMessage(colorify(this.plugin.getConfig().getString("invalid-permission")));
+            sender.sendMessage(colorify(this.plugin.get("invalid-permission", "&c&lError &7| &fYou do not have permission to run this command.")));
             return;
         }
 
         this.plugin.reload();
-        sender.sendMessage(colorify(this.plugin.getConfig().getString("reload")));
+        sender.sendMessage(colorify(this.plugin.get("reload", "<r:0.7>&lRainbowBoots &7| &fYou have reloaded the plugin.")));
     }
 
     @Override

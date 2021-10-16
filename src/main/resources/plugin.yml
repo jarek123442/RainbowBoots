@@ -3,4 +3,4 @@ main: xyz.oribuin.rainbowboots.RainbowBoots
 description: Colourful rainbow boots.
 api-version: '1.13'
 author: Oribuin
-version: '1.0.2'
+version: '1.0.3'

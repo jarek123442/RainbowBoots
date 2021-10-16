@@ -11,6 +11,10 @@ import org.bukkit.scheduler.BukkitRunnable;
 import xyz.oribuin.orilibrary.util.HexUtils;
 import xyz.oribuin.rainbowboots.RainbowBoots;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class BootTask extends BukkitRunnable {
 
     private int hue = 0;
@@ -45,8 +49,14 @@ public class BootTask extends BukkitRunnable {
                     LeatherArmorMeta meta = (LeatherArmorMeta) item.getItemMeta();
                     assert meta != null;
 
-                    meta.setDisplayName(HexUtils.colorify("<r#25:0.7:l>&lRainbow Boots"));
-
+                    meta.setDisplayName(HexUtils.colorify(this.plugin.get("rainbow-boots.name", "<r:0.7>&lRainbow Boots")));
+                    List<String> lore = this.plugin.get("rainbow-boots.lore", Arrays.asList(
+                                    "&7Rainbow boots with cool effects.",
+                                    " ",
+                                    "&7Equip to experience the <r:0.7>&lRainbow"
+                            ))
+                            .stream().map(HexUtils::colorify).collect(Collectors.toList());
+                    meta.setLore(lore);
                     meta.setColor(this.getRainbowColor());
                     item.setItemMeta(meta);
                     player.getInventory().setBoots(item);
